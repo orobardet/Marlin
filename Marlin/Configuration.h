@@ -473,6 +473,8 @@
   #if ENABLED(DELTA_AUTO_CALIBRATION) || ENABLED(DELTA_CALIBRATION_MENU)
     // Set the radius for the calibration probe points - max DELTA_PRINTABLE_RADIUS*0.869 for non-eccentric probes
     #define DELTA_CALIBRATION_RADIUS 70.0 // mm
+    // Set the steprate for papertest probing
+    #define PROBE_MANUALLY_STEP 0.025
   #endif
 
   // Print surface diameter/2 minus unreachable space (avoid collisions with vertical towers).
@@ -487,7 +489,7 @@
   #define DELTA_ENDSTOP_ADJ { 0.0, 0.0, 0.0 } // get these from auto calibrate
 
   // Horizontal distance bridged by diagonal push rods when effector is centered.
-  #define DELTA_RADIUS 152.357 //mm  Get this value from auto calibrate
+  #define DELTA_RADIUS 127.54 //mm  Get this value from auto calibrate
   
   // Trim adjustments for individual towers
   // tower angle corrections for X and Y tower / rotate XYZ so Z tower angle = 0
@@ -591,7 +593,7 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 999, 999, 999, 999 }
+#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 3000, 3000 }
 
 /**
  * Default Acceleration (change/s) change = mm/s
@@ -601,9 +603,9 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          999    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  999    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   999    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION          3000    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  3000    // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION   3000    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk (mm/s)
@@ -736,7 +738,7 @@
  * Kossel Pro note: The correct value is likely -17.45 but I'd rather err on the side of
  * not giving someone a head crash. Use something like G29 Z-0.2 to adjust as needed.
  */
-#define Z_PROBE_OFFSET_FROM_EXTRUDER -10  // Increase this if the first layer is too thin (remember: it's a negative number so increase means closer to zero).
+#define Z_PROBE_OFFSET_FROM_EXTRUDER -8.21  // Increase this if the first layer is too thin (remember: it's a negative number so increase means closer to zero).
 // X and Y axis travel speed (mm/m) between probes
 #define XY_PROBE_SPEED 6000
 
@@ -1218,7 +1220,7 @@
  * Attention: EXPERIMENTAL. G-code arguments may change.
  *
  */
-//#define NOZZLE_CLEAN_FEATURE
+#define NOZZLE_CLEAN_FEATURE
 
 #if ENABLED(NOZZLE_CLEAN_FEATURE)
   // Default number of pattern repetitions
@@ -1257,7 +1259,7 @@
  *   M76 - Pause the print job timer
  *   M77 - Stop the print job timer
  */
-//#define PRINTJOB_TIMER_AUTOSTART
+#define PRINTJOB_TIMER_AUTOSTART
 
 /**
  * Print Counter
@@ -1271,7 +1273,7 @@
  *
  * View the current statistics with M78.
  */
-//#define PRINTCOUNTER
+#define PRINTCOUNTER
 
 //=============================================================================
 //============================= LCD and SD support ============================
